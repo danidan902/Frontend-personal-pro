@@ -1,8 +1,5 @@
-
-
-/* Global Styles */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #fcfcf3;
   display: flex;
   align-items: center;
@@ -13,13 +10,11 @@ body {
   margin: 0;
 }
 
-
 @media (max-width: 720px) {
   body {
     padding: 1rem;
   }
 }
-
 
 .content {
   background-color: #fff;
@@ -65,16 +60,13 @@ body {
     padding: 8px 1px;
     border-radius: 6px;
     font-size: 14px;
-    
   }
 }
-
 
 .header-text h2,
 .forgot a {
   color: #82257b;
 }
-
 
 .right-box {
   padding: 10px 10px 20px 20px;
@@ -101,7 +93,6 @@ body {
   border-radius: 60px 0 0 60px;
 }
 
-
 .switch {
   background-color: #82257b;
   color: #fff;
@@ -116,7 +107,6 @@ body {
 .content.active .switch {
   transform: translateX(50%);
 }
-
 
 .switch-pannel {
   position: absolute;

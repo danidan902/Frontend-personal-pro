@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from 'axios'
+import './project.css'
 function LoginRegister() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
