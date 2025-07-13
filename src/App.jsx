@@ -1,12 +1,14 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import LoginRegister from './LoginRegister.jsx'
+import Thankyou from './Thankyou.jsx'
   function App() {
     return (
-      <BrowserRouter>
-       <Routes>
+   
+       <Routes >
         <Route path='/' element={<LoginRegister/>} />
+        <Route path='/thankyou' element={<Thankyou/>}/>
        </Routes>
-      </BrowserRouter>
+     
     )
   }
   

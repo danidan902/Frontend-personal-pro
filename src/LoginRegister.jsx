@@ -1,37 +1,67 @@
+
 import { useState } from "react"
 import axios from 'axios'
 import './project.css'
+import { useNavigate } from 'react-router-dom'
 function LoginRegister() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage ] = useState("")
+  const [loading, setLoading] = useState(false)
    
   // https://backend-pro-1-a0s3.onrender.com
 
-       const handleSubmit = async (e) => {
-        e.preventDefault();
+   const navigate = useNavigate()
 
-        const res = await axios.post("http://localhost:5001/api/register", {
-          
-          method: "POST",
-          headers: {
-            "Content-Type" : "application/json",
-          },
-          
-          body: JSON.stringify({
-            name: document.getElementById('name').value,
-            email,
-            password,
-            message: document.getElementById('message').value,
-          })
-        
-        })
-       
-        const data = await res.json()
-        console.log("Response", data)
-       }
-      
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true)
+
+  try {
+    const res = await axios.post("http://localhost:5001/api/register", {
+      name,
+      email,
+      password,
+      message,
+    });
+   
+     await new Promise((resolve) => setTimeout(resolve, 6000))
+     
+
+    console.log("Response:", res.data);
+    setName("");
+    setEmail("");
+    setPassword("");
+    setMessage("");
+
+    navigate("/thankyou")
+  } catch (error) {
+    console.error("Error during registration:", error);
+   
+  }
+
+  setLoading(false)
+};
+
+    const handleLogin = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await axios.post("http://localhost:5001/api/login", {
+      email,
+      password
+    });
+
+    console.log("Login success:", res.data);
+    alert("Login successful!");
+    // Optionally store token or user info in localStorage
+  } catch (error) {
+    console.error("Login error:", error.response?.data);
+    alert(error.response?.data?.message || "Login failed");
+  }
+};
+
 
       function LoginRegister() {
         const content = document.getElementById("content")
@@ -54,11 +84,9 @@ function LoginRegister() {
       {/* first registration form */}
 
       <div className="columns-md-20 d-flex justify-content-center contect-box"  >
-        <form>
+        <form  onSubmit={handleSubmit} >
           <div className="header-text mb-4">
             <h2>Create Account</h2>
-
-
 
             
           </div>
@@ -114,11 +142,11 @@ function LoginRegister() {
 
           <div className="input-group justify-content-center">
             <button
-             onSubmit={handleSubmit}
+             disabled={loading}
               type="submit"
-              className="btn border-white text-white p-2  fs-6 mb-3"
+              className="button2 boredr-black text-white p-2  fs-6 mb-3"
             >
-              Register
+            {loading ? 'Loading...' : 'Submit'}
             </button>
           </div>
         </form>
@@ -127,7 +155,7 @@ function LoginRegister() {
       {/* second registration form */}
 
       <div className="columns-md-6 right-box">
-        <form>
+        <form  onSubmit={handleLogin}>
           <div className="header-text mb-4">
             <h2>Sign In</h2>
           </div>
@@ -179,7 +207,7 @@ function LoginRegister() {
           <div className="input-group justify-content-center">
             <button
               type="submit"
-              className="btn border-white text-white w-50 fs-6 mb-3"
+              className="button1 border-white text-white w-50 fs-6 mb-3"
             >
               Log In
             </button>
@@ -193,7 +221,7 @@ function LoginRegister() {
             <h1>Hello Again</h1>
             <p>We are happy to see you back</p>
             <button
-              className=" hidden btn text-white w-50 fs-6 border"
+              className=" hidden btn text-white  p-2 fs-6 border"
               id="login" onClick={LoginRegister}
             >
               Log In

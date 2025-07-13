@@ -54,6 +54,14 @@ body {
   background-color: #6d1e69;
 }
 
+.button1:hover {
+  background-color: #6d1e69;
+}
+
+.button2:hover {
+  background-color: #6d1e69;
+}
+
 /* Button (mobile) */
 @media (max-width: 720px) {
   .content button {
@@ -137,4 +145,72 @@ body {
 
 .content.active .switch-right {
   transform: translateX(200%);
+}
+
+
+.Foryou-page {
+  position: relative;
+  width: 80vh;
+  max-width: 90%;
+  height: 60vh;
+  padding: 30px;
+  border-radius: 25px;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Rotating border wrapper */
+.Foryou-page::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: conic-gradient(
+    #ff00cc,
+    #3333ff,
+    #00ffcc,
+    #ffcc00,
+    #ff00cc
+  );
+  border-radius: 30px;
+  animation: rotateBorder 6s linear infinite;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  padding: 6px;
+}
+
+/* Smooth border rotation */
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .Foryou-page {
+    width: 95%;
+    height: 20vh;
+    font-size: 1.2rem;
+    padding: 20px;
+  }
 }
