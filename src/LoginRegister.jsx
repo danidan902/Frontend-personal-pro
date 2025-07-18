@@ -146,7 +146,7 @@ const handleSubmit = async (e) => {
               type="submit"
               className="button2 boredr-black text-white p-2  fs-6 mb-3"
             >
-            {loading ? 'Loading...' : 'Submit'}
+            {loading ? 'Loading...' : 'Register'}
             </button>
           </div>
         </form>
@@ -206,10 +206,11 @@ const handleSubmit = async (e) => {
 
           <div className="input-group justify-content-center">
             <button
+              disabled={loading}
               type="submit"
               className="button1 border-white text-white w-50 fs-6 mb-3"
             >
-              Log In
+              {loading ? "Loading..." :  "Sign In" }
             </button>
           </div>
         </form>
