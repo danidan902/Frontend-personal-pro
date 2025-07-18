@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
   setLoading(true)
 
   try {
-    const res = await axios.post("http://localhost:5001/api/register", {
+    const res = await axios.post("https://backend-pro-1-a0s3.onrender.com/api/register", {
       name,
       email,
       password,
@@ -48,7 +48,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    const res = await axios.post("http://localhost:5001/api/login", {
+    const res = await axios.post("https://backend-pro-1-a0s3.onrender.com/api/login", {
       email,
       password
     });
